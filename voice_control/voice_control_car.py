@@ -16,11 +16,11 @@ servo = mh._pwm
 servo.setPWMFreq(60)
 
 servoCH = 0 # 서보 연결된 핀
-SERVO_PULSE_MAX = 614   # 서보 작동 범위
+SERVO_PULSE_MAX = 400   # 서보 작동 범위
 SERVO_PULSE_MIN = 200
 
 # 웹소켓 서버(차량) ip
-ServerIP = '192.168.137.250'
+ServerIP = '192.168.137.205'
 WebsocketPort = 7890
 
 # 앞으로
@@ -49,21 +49,21 @@ def speed_down():
 
 # 각도만큼 핸들 틀기
 def steer(angle = 0):   
-    if angle <= -60:
-        angle = -60
-    if angle >= 60:
-        angle = 60
-    pulse_time = SERVO_PULSE_MIN + (SERVO_PULSE_MAX - SERVO_PULSE_MIN) // 180 * (angle + 90) # angle = -90˚~ +90˚ 사이의 값. 비례해서 pulse_time이 정해짐
-
+    if angle < -90:
+        angle = -90
+    elif angle > 90:
+        angle = 90
+    pulse_time = int(SERVO_PULSE_MIN + (SERVO_PULSE_MAX - SERVO_PULSE_MIN) * (angle + 90) / 180)
+    print(f"[STEER] angle: {angle} → pulse_time: {pulse_time}")
     servo.setPWM(servoCH, 0, pulse_time)
 
 # 우회전
 def steer_right():
-    steer(30)
+    steer(90)
 
 # 좌회전
 def steer_left():
-    steer(-30)
+    steer(-90)
 
 # 핸들 중앙
 def steer_center():
@@ -94,7 +94,6 @@ async def voice_drive(websocket):
             # 응답 보냄
             await websocket.send(response)
 
-
     except websockets.ConnectionClosed:
         print('네크워크 확인')
 
@@ -114,4 +113,3 @@ async def main():
     
 if __name__ == '__main__':
     asyncio.run(main())
-
