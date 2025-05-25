@@ -8,7 +8,7 @@ from PySide6.QtWidgets import (
     QApplication, QMainWindow, QLabel, QPushButton,
     QStackedWidget, QWidget, QVBoxLayout, QHBoxLayout
 )
-from PySide6.QtGui import QPixmap
+from PySide6.QtGui import QPixmap, QFontDatabase, QFont
 from PySide6.QtCore import Qt
 
 
@@ -24,8 +24,8 @@ class MainWindow(QMainWindow):
         self.stacked_widget = QStackedWidget()
 
         # 이미지 로딩
-        image_path1 = os.path.abspath("../../Downloads/map.png")
-        image_path2 = os.path.abspath("../../Downloads/steering-wheel.png")
+        image_path1 = os.path.abspath("./img/map.png")
+        image_path2 = os.path.abspath("./img/steering-wheel.png")
         pixmap1 = QPixmap(image_path1)
         pixmap2 = QPixmap(image_path2)
 
@@ -118,6 +118,16 @@ class MainWindow(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+
+    # 폰트 설정: malgun.ttf 사용
+    font_path = os.path.abspath("malgun.ttf")
+    font_id = QFontDatabase.addApplicationFont(font_path)
+    if font_id != -1:
+        font_family = QFontDatabase.applicationFontFamilies(font_id)[0]
+        app.setFont(QFont(font_family))
+    else:
+        print("malgun.ttf 로딩 실패!")
+
     window = MainWindow()
     window.show()
     sys.exit(app.exec())
