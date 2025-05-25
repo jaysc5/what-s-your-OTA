@@ -4,6 +4,7 @@ from PySide6.QtWidgets import QSizePolicy
 from map_page import MapPage
 from drive_page import DrivePage
 from auto_drive_page import AutoDrivePage
+from PySide6.QtGui import QPixmap, QFontDatabase, QFont
 
 from PySide6.QtWidgets import (
     QApplication, QMainWindow, QLabel, QPushButton,
@@ -18,6 +19,13 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.setWindowTitle("Map & Update Navigation")
         self.setGeometry(100, 100, 800, 420)
+
+        # 폰트 설정
+        font_id = QFontDatabase.addApplicationFont("./malgun.ttf")
+        if font_id != -1:
+            font_family = QFontDatabase.applicationFontFamilies(font_id)[0]
+            app_font = QFont(font_family, 10)
+            QApplication.setFont(app_font)
 
         self.central_widget = QWidget()
         self.setCentralWidget(self.central_widget)
