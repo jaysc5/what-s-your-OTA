@@ -1,6 +1,6 @@
 # 📡 What's Your OTA?
 
-SSAFY 13기 임베디드 관통 프로젝트  
+SSAFY 13기 1학기 서울 19반 임베디드 관통 프로젝트  
 Raspberry Pi 기반 자율주행 차량에 OTA(Over-The-Air) 업데이트 기능을 적용한 인포테인먼트 시스템 개발 프로젝트입니다.
 
 ---
