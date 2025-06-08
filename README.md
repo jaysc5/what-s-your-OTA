@@ -34,7 +34,7 @@ Raspberry Pi 기반 자율주행 차량에 OTA(Over-The-Air) 업데이트 기능
 
 ### ✔ 인포테인먼트 기능
 - **지도 확인**: Google Maps API 기반 내장 브라우저 표시
-- **수동 제어**: 터치 입력을 차량 모듈에 WebSocket으로 전달
+- **수동 제어**: 터치 입력(직진, 후진, 좌회전, 우회전)을 차량 모듈에 WebSocket으로 전달
 - **음성 제어**: Google Cloud Speech API로 실시간 명령어 인식 및 전송
 - **GUI 자동 실행**: systemd 서비스로 재부팅 시 앱 자동 실행
 
