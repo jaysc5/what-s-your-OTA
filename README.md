@@ -80,8 +80,3 @@ Raspberry Pi 기반 자율주행 차량에 OTA(Over-The-Air) 업데이트 기능
 - OTA 감지 및 업데이트 코드: [github.com/jaysc5/OTA-Software-Update](https://github.com/jaysc5/OTA-Software-Update)
 - 프로젝트 메인 저장소: [github.com/jaysc5/what-s-your-OTA](https://github.com/jaysc5/what-s-your-OTA)
 
----
-
-## 🙋 팀원
-
-양가은, 이봄, 최지수 (SSAFY 13기 임베디드 19반)
